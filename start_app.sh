@@ -10,9 +10,10 @@ cd home/ubuntu/microblog_VPC_deployment
 
 echo " "
 echo “Creating a virtual environment, 'virtual'”
-sudo apt install python3.9 python3.9-venv
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt install python3-pip
+sudo apt install python3.9 python3.9-venv -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt install python3-pip -y
+sudo apt install software-properties-common -y
 python3.9 -m venv virtual
 
 echo " "
@@ -21,7 +22,7 @@ source virtual/bin/activate
 
 echo " "
 echo “Installing nginx”
-sudo apt install nginx
+sudo apt install nginx -y
 
 echo " "
 echo "Installing dependencies from requirements.txt file"
@@ -29,7 +30,7 @@ pip install -r /home/ubuntu/microblog_VPC_deployment/requirements.txt
 
 echo " "
 echo "Installing gunicorn, pymysql, cryptography"
-pip install gunicorn pymysql cryptography
+pip install gunicorn pymysql cryptography -y
 
 echo " "
 echo "Setting the environment variable  FLASK_APP to be equal to microblog.py"
