@@ -11,19 +11,19 @@ pipeline {
                 git clone https://github.com/ClintKan/microblog_VPC_deployment.git
                 cd /home/ubuntu/microblog_VPC_deployment
                 pwd
-                // sudo apt install python3.9 python3.9-venv -y
-                // sudo add-apt-repository ppa:deadsnakes/ppa
-                // sudo apt install python3-pip
-                // sudo apt install software-properties-common
-                // python3.9 -m venv virtual
-                // source virtual/bin/activate
-                // sudo apt install nginx
-                // pip install -r /home/ubuntu/microblog_VPC_deployment/requirements.txt
-                // pip install gunicorn pymysql cryptography
-                // export FLASK_APP=microblog.py
-                // flask translate compile
-                // flask db upgrade
-                // gunicorn -b :5000 -w 4 microblog:app --daemon 
+                sudo apt install python3.9 python3.9-venv -y
+                sudo add-apt-repository ppa:deadsnakes/ppa
+                sudo apt install python3-pip
+                sudo apt install software-properties-common
+                python3.9 -m venv virtual
+                source virtual/bin/activate
+                sudo apt install nginx
+                pip install -r /home/ubuntu/microblog_VPC_deployment/requirements.txt
+                pip install gunicorn pymysql cryptography
+                export FLASK_APP=microblog.py
+                flask translate compile
+                flask db upgrade
+                gunicorn -b :5000 -w 4 microblog:app --daemon 
                 '''
             }
         }
@@ -67,7 +67,7 @@ pipeline {
     //         steps {
     //             sh '''#!/bin/bash
     //             ssh -i ~/.ssh/id_ed25519 ubuntu@3.137.177.13 << 'ENDSSH'
-    //             /var/lib/
+    //             
     //             bash /home/ubuntu/setup.sh
     //             ENDSSH
     //             fi
