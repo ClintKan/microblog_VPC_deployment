@@ -44,12 +44,11 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 mkdir -p /var/lib/jenkins/.ssh/
-                if [ ! -f "id_ed25519" ]; then
+                if [ ! -e "id_ed25519" ]; then
                     ssh-keygen -t ed25519 -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
                 else
                     ssh-keyscan -H 170.10.0.215 >> /var/lib/jenkins/.ssh/known_hosts
-                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 jenkins@170.10.0.215
-                    ssh -t -i /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh"
+                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 jenkins@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh"
                 fi
                 '''
             }
