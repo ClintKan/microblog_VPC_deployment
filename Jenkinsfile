@@ -6,25 +6,13 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                echo "Checking regular updates & installing them"
-                sudo apt update
-                sudo apt upgrade -y
-                sudo add-apt-repository ppa:deadsnakes/ppa -y
-                sudo apt install python3.9 python3-pip python3.9-venv -y
-                python3.9 -m venv virtual
-                pip install -r requirements.txt
-
-                // cd /home/ubuntu/microblog_VPC_deployment
-                // sudo add-apt-repository ppa:deadsnakes/ppa
-                // sudo apt install python3-pip
-                // sudo apt install software-properties-common
-                // source virtual/bin/activate
-                // sudo apt install nginx
-                // pip install gunicorn pymysql cryptography
-                // export FLASK_APP=microblog.py
-                // flask translate compile
-                // flask db upgrade
-                // gunicorn -b :5000 -w 4 microblog:app --daemon 
+                sh 'echo "Checking regular updates & installing them"'
+                sh 'sudo apt update'
+                sh 'sudo apt upgrade -y'
+                sh 'sudo add-apt-repository ppa:deadsnakes/ppa -y'
+                sh 'sudo apt install python3.9 python3-pip python3.9-venv -y'
+                sh 'python3.9 -m venv virtual'
+                sh 'pip install -r requirements.txt'
                 '''
             }
         }
@@ -69,7 +57,7 @@ pipeline {
     //             sh '''#!/bin/bash
     //             ssh -i ~/.ssh/id_ed25519 ubuntu@170.10.0.215 << 'ENDSSH'
     //             git clone https://github.com/ClintKan/microblog_VPC_deployment.git
-    //             bash ./setup.sh
+    //             bash /home/ubuntu/microblog_VPC_deployment/setup.sh
     //             ENDSSH
     //             '''
     //         }
