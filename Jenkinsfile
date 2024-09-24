@@ -45,7 +45,7 @@ pipeline {
                 sh '''#!/bin/bash
                 ssh -i -t /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 << 'ENDSSH'
                 git clone https://github.com/ClintKan/microblog_VPC_deployment.git
-                bash /home/ubuntu/microblog_VPC_deployment/setup.sh
+                bash ~./setup.sh
                 ENDSSH
                 '''
             }
