@@ -1,11 +1,10 @@
-# Kura Labs Cohort 5- Deployment Workload 4
+# C5 DEPLOYMENT WORKLOAD 4
 
 
 ---
 
 
-
-## Provisioning Server Infrastructure:
+## <ins> OBJECTIVE</ins>
 
 Welcome to Deployment Workload 4! In Workload 3 We shifted to infrastucture provisioned by us and learned about what goes into deploying an application.  That was hardly an effective system though.  Let's build out our infrastructure a little more.
 
