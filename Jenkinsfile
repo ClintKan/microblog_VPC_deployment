@@ -6,13 +6,13 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                sh 'echo "Checking regular updates & installing them"'
-                sh 'sudo apt update'
-                sh 'sudo apt upgrade -y'
-                sh 'sudo add-apt-repository ppa:deadsnakes/ppa -y'
-                sh 'sudo apt install python3.9 python3-pip python3.9-venv -y'
-                sh 'python3.9 -m venv virtual'
-                sh 'pip install -r requirements.txt'
+                echo "" | echo "Checking regular updates & installing them"
+                echo "" | sudo -S apt update
+                echo "" | sudo -S apt upgrade -y
+                echo "" | sudo -S add-apt-repository ppa:deadsnakes/ppa -y
+                echo "" | sudo -S apt install python3.9 python3-pip python3.9-venv -y
+                python3.9 -m venv virtual
+                pip install -r requirements.txt
                 '''
             }
         }
