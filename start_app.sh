@@ -3,7 +3,15 @@ sudo apt update
 sudo apt upgrade -y
 
 echo "Cloning the Workload 4 repo - named 'microblog_VPC_deployment'"
-git clone https://github.com/ClintKan/microblog_VPC_deployment.git
+if [ -d "microblog_VPC_deployment" ]; then
+    cd microblog_VPC_deployment
+    git pull origin main
+else
+    git clone https://github.com/ClintKan/microblog_VPC_deployment.git
+    cd microblog_VPC_deployment
+fi
+
+
 
 echo "Changing directory, to get into the cloned repo"
 cd home/ubuntu/microblog_VPC_deployment
