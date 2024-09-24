@@ -10,9 +10,8 @@ pipeline {
                 sudo apt update
                 sudo apt upgrade -y
                 sudo add-apt-repository ppa:deadsnakes/ppa -y
-                sudo apt install python3.9 python3.9-venv -y
+                sudo apt install python3.9 python3-pip python3.9-venv -y
                 python3.9 -m venv virtual
-                pip install --upgrade pip
                 pip install -r requirements.txt
 
                 // cd /home/ubuntu/microblog_VPC_deployment
