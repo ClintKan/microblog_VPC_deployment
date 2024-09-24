@@ -43,7 +43,8 @@ pipeline {
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
-                ssh -t -i /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 << "git clone https://github.com/ClintKan/microblog_VPC_deployment.git bash ~./setup.sh"
+                ssh-keyscan -H 170.10.0.215 >> ~/.ssh/known_hosts
+                ssh -t -i /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git bash ~./setup.sh"
                 '''
             }
         }
