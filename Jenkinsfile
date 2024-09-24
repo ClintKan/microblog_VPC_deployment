@@ -42,7 +42,8 @@ pipeline {
     //     }
       stage ('Clean') {
             steps {
-                sh '''#!/bin/bash
+                sh '''
+                #!/bin/bash
                 pid=$(pgrep -f "gunicorn")
                 pid_count=$(pgrep -f "gunicorn" | wc -l)
 
