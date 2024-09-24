@@ -43,7 +43,7 @@ pipeline {
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
-                ssh -i -t /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 << 'ENDSSH'
+                ssh -i /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 << 'ENDSSH'
                 git clone https://github.com/ClintKan/microblog_VPC_deployment.git
                 bash ~./setup.sh
                 ENDSSH
