@@ -12,7 +12,7 @@ pipeline {
                 echo "" | sudo -S add-apt-repository ppa:deadsnakes/ppa -y
                 echo "" | sudo -S apt install python3.9 python3-pip python3.9-venv -y
                 python3.9 -m venv virtual
-                source virtual/bin/activate
+                . virtual/bin/activate
                 pip install -r requirements.txt
                 '''
             }
