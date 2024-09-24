@@ -43,7 +43,11 @@ pipeline {
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
-                ssh-keyscan -H 170.10.0.215 >> ~/.ssh/known_hosts
+                mkdir -p /var/lib/jenkins/.ssh/
+                ssh-keygen -t ed25519 -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
+                ssh-keyscan -H 170.10.0.215 >> /var/lib/jenkins/.ssh/known_hosts
+                ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 jenkins@170.10.0.215
+                ssh-keygen /var/lib/jenkins/.ssh/known_hosts
                 ssh -t -i /home/ubuntu/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh"
                 '''
             }
