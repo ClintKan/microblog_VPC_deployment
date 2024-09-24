@@ -40,24 +40,6 @@ pipeline {
     //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
     //         }
     //     }
-      stage ('Clean') {
-            steps {
-                sh '''
-                #!/bin/bash
-                pid=$(pgrep -f "gunicorn")
-                pid_count=$(pgrep -f "gunicorn" | wc -l)
-
-                # Check if PID is found and is valid (non-empty)
-                if [[ $pid_count -gt 0 ]]; then
-                    for prcs in pid_count; do
-                    kill "$pid"
-                    echo "Killed 'gunicorn' process with PID $pid"
-                else
-                    echo "No gunicorn process found to kill"
-                fi
-                '''
-            }
-        }
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
