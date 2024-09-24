@@ -18,8 +18,8 @@ cd home/ubuntu/microblog_VPC_deployment
 
 echo " "
 echo “Creating a virtual environment, 'virtual'”
-sudo apt install python3.9 python3.9-venv -y
 sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt install python3.9 python3.9-venv -y
 sudo apt install python3-pip -y
 sudo apt install software-properties-common -y
 python3.9 -m venv virtual
