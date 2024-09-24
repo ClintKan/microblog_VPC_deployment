@@ -8,21 +8,23 @@
 
 While in workload 3 (see snippet of it here), it was about manually deploying a webapp (plus doing unit testing) using a Jenkins multibranch CI/CD pipeline, in this workload 4, we structure out the cloud infrastructure; from VPCs, availability zones, nat gateway, VPC peering CIDR blocks, subnets, route tables.
 
-## Instructions
+## Steps Taken
 
-1. Clone this repo to your GitHub account. IMPORTANT: Make sure that the repository name is "microblog_VPC_deployment"
+1. Created an AWS account along with default infrastructure components like; VPC, default region, availability zone, CIDR block, NAT gateway and default subnet.
 
-2. In the AWS console, create a custom VPC with one availability zome, a public and a private subnet.  There should be a NAT Gateway in 1 AZ and no VPC endpoints.  DNS hostnames and DNS resolution should be selected.
+2. Clone this repo to your GitHub account. IMPORTANT: Make sure that the repository name is "microblog_VPC_deployment"
 
-3. Navigate to subnets and edit the settings of the public subet you created to auto assign public IPv4 addresses.
+3. In the AWS console, create a custom VPC with one availability zome, a public and a private subnet.  There should be a NAT Gateway in 1 AZ and no VPC endpoints.  DNS hostnames and DNS resolution should be selected.
 
-4. In the Default VPC, create an EC2 t3.medium called "Jenkins" and install Jenkins onto it.  
+4. Navigate to subnets and edit the settings of the public subet you created to auto assign public IPv4 addresses.
 
-5. Create an EC2 t3.micro called "Web_Server" In the PUBLIC SUBNET of the Custom VPC, and create a security group with ports 22 and 80 open.  
+5. In the Default VPC, create an EC2 t3.medium called "Jenkins" and install Jenkins onto it.  
 
-6. Create an EC2 t3.micro called "Application_Server" in the PRIVATE SUBNET of the Custom VPC,  and create a security group with ports 22 and 5000 open. Make sure you create and save the key pair to your local machine.
+6. Create an EC2 t3.micro called "Web_Server" In the PUBLIC SUBNET of the Custom VPC, and create a security group with ports 22 and 80 open.  
 
-7. SSH into the "Jenkins" server and run `ssh-keygen`. Copy the public key that was created and append it into the "authorized_keys" file in the Web Server. 
+7. Create an EC2 t3.micro called "Application_Server" in the PRIVATE SUBNET of the Custom VPC,  and create a security group with ports 22 and 5000 open. Make sure you create and save the key pair to your local machine.
+
+8. SSH into the "Jenkins" server and run `ssh-keygen`. Copy the public key that was created and append it into the "authorized_keys" file in the Web Server. 
 
 IMPORTANT: Test the connection by SSH'ing into the 'Web_Server' from the 'Jenkins' server.  This will also add the web server instance to the "list of known hosts"
 
