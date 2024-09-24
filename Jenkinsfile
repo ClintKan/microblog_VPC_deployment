@@ -21,6 +21,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source virtual/bin/activate
+                export FLASK_APP=microblog.py
                 py.test ./tests/unit/test_app.py --verbose --junit-xml test-reports/results.xml
                 '''
             }
