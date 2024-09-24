@@ -12,7 +12,7 @@ pipeline {
                 sudo add-apt-repository ppa:deadsnakes/ppa -y
                 sudo apt install python3.9 python3-pip python3.9-venv -y
                 python3.9 -m venv virtual
-                . virtual/bin/activate #used . instead of source
+                . virtual/bin/activate # used . instead of source
                 pip install -r requirements.txt
                 '''
             }
@@ -20,7 +20,7 @@ pipeline {
         stage ('Test') {
             steps {
                 sh '''#!/bin/bash
-                source venv/bin/activate
+                source virtual/bin/activate
                 py.test ./tests/unit/test_app.py --verbose --junit-xml test-reports/results.xml
                 '''
             }
