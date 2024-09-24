@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh '''
                 #!/bin/bash
-                echo “Checking regular updates & installing them”
+                echo "Checking regular updates & installing them"
                 sudo apt update
                 sudo apt upgrade -y
                 sudo apt install python3.9 python3.9-venv -y
