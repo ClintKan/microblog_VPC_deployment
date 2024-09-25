@@ -46,10 +46,10 @@ pipeline {
                 mkdir -p /var/lib/jenkins/.ssh/
                 if [ ! -f "/var/lib/jenkins/.ssh/id_ed25519" ] && [ ! -f "/var/lib/jenkins/.ssh/id_ed25519.pub" ]; then
                     ssh-keygen -t ed25519 -f /var/lib/jenkins/.ssh/id_ed25519 -N ""
-                else
+                fi
+                    chmod 600 /var/lib/jenkins/.ssh/id_ed25519
                     ssh-keyscan -H 170.10.0.215 >> /var/lib/jenkins/.ssh/known_hosts
                     ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 jenkins@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh"
-                fi
                 '''
             }
         }
