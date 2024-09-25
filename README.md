@@ -4,11 +4,11 @@
 ---
 
 
-## <ins> OBJECTIVE</ins>
+## <ins>PURPOSE</ins>
 
 While in workload 3 (see snippet of it here), it was about manually deploying a webapp (plus doing unit testing) using a Jenkins multibranch CI/CD pipeline, in this workload 4, we structure out the cloud infrastructure; from VPCs, availability zones, nat gateway, VPC peering CIDR blocks, subnets, route tables.
 
-## Steps Taken
+## <ins>STEPS</ins>
 
 1. Application source files were cloned onto my workstation and then pushed to my GitHub (with a specified repo name - without the quotes - "microblog_VPC_deployment")
 
@@ -121,7 +121,15 @@ CIDR Blocks so that the traffic can be redirected properly.
 ---
 
 
-## <ins> TROUBLESHOOTING STEPS</ins>
+## <ins>SYSTEM DESIGN DIAGRAM</ins>
+
+
+
+
+---
+
+
+## <ins>TROUBLESHOOTING STEPS</ins>
 
 a.) The inability to have cross communication between the VPCs. This led to the use of the VPC Peering option that helps communicate on a private network level. Additionally, acceptance of the request to connect to each other and then the association of the CIDR blocks turned out to be a key step or else the VPC peering didn't work by itself.
 
@@ -146,7 +154,7 @@ d.) The Deploy stage kept failing with an error of permission denied (public key
 ---
 
 
-## <ins> OPTIMIZATION STEPS</ins>
+## <ins>OPTIMIZATION STEPS</ins>
 
 
 
@@ -154,7 +162,7 @@ d.) The Deploy stage kept failing with an error of permission denied (public key
 ---
 
 
-## <ins> CONCLUSION STEPS</ins>
+## <ins>CONCLUSION STEPS</ins>
 
 
 
@@ -162,7 +170,7 @@ d.) The Deploy stage kept failing with an error of permission denied (public key
 ---
 
 
-## <ins> REFERENCES & HONEROABLE MENTIONS FROM COLLEAGUES</ins>
+## <ins>REFERENCES & HONEROABLE MENTIONS FROM COLLEAGUES</ins>
 
 Being a learning process, there were multiple resources and program colleagues that I consulted to be able to put this together and in this section I would like to list them out;
 
