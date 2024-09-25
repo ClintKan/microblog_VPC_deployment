@@ -144,8 +144,9 @@ CIDR Blocks so that the traffic can be redirected properly.
 ## <ins>SYSTEM DESIGN DIAGRAM</ins>
 
 
-
-
+<div align="center">
+	<img width="919" alt="Pasted Graphic 18" src="https://github.com/user-attachments/assets/dcf2fc7c-1f2c-4f4d-8f81-c646d70c7895">
+</div>
 
 
 
