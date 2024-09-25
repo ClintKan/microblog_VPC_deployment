@@ -10,13 +10,13 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
 
 ## <ins>STEPS</ins>
 
-1. Application source files were cloned onto my workstation and then pushed to my GitHub (with a specified repo name - without the quotes - "microblog_VPC_deployment")
+1. Application source files were cloned onto my workstation and then pushed to my GitHub (with a specified repo name - without the quotes - "**_microblog_VPC_deployment_**")
 
-2. Created an AWS account along with default infrastructure components like; VPC, default region, availability zone, CIDR block, NAT gateway and default subnet. It is within this that an EC2 (t3.medium Ubuntu Linux server) was setup to be used for the running of the CI/CD pipeline.
+2. Created an AWS account along with default infrastructure components like; VPC, default region, availability zone, CIDR block, NAT gateway and default subnet. It is within this that an EC2 (_t3.medium Ubuntu Linux server_) was setup to be used for the running of the CI/CD pipeline.
 
-3. On the above Jenkins EC2 server, Jenkins was installed on it and the following security port configurations aka Secur; 22 for SSH, 8080 for Jenkins done.
+3. On the above Jenkins EC2 server, Jenkins was installed on it and the following security port configurations aka Security Groups; 22 (for SSH) and 8080 (for Jenkins), were setup.
 
-4. A second (custom) VPC was then created, with one availability zone, one public subnet and one private subnet, a NAT Gateway in 1 AZ but with DNS hostnames and DNS resolution should be selected.
+4. A second (_custom_) VPC was then created, with one availability zone, one public subnet and one private subnet, a NAT Gateway in 1 AZ but with DNS hostnames and DNS resolution should be selected.
 
 5. Three EC2s were then created as follows;
 
@@ -41,17 +41,24 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
     <ins>**Note:**</ins> To confirm the changes made are valid, run the command ``` sudo nginx -t ```.
 
     While not related to the application, but rather for monitoring purposes, Node Exporter a monitoring tool was installed on the Web server as well so as to scrape metrics and serve them to the Monitoring
-    server's Prometheus and Grafana (more on this below).
-
+    server's Prometheus and Grafana (_more on this below_).
 
    - One for the Application Server - Created in a private subnet with a security group opening only ports; 22 (SSH) & 5000 (this port was opened to be used for serving the web app
      to Ngnix serving as a reverse proxy). Additionally, the application server is the hub of all the webapp's files - that got added by executing the start_app.sh that got
-     invoked by executing the setup.sh from the Web Server.
+     invoked by executing the setup.sh from the Web Server. This was placed into the private subnet for extra level protection - not to interface with the internet.
 
    - One for the Monitoring Server - Created in a public subnet with a security group opening only ports; 22 (SSH) & 3000 (Grafana) & 9090 (Prometheus). This is a server that was
      setup for monitoring purposes of the (aforementioned) servers and the webapp.
      
-     
+   <ins>**Note:**</ins> * Pior to every automated SSH session that happened in the Deploy stage and the setup.sh script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
+   			  EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (./ssh/known_hosts) file.
+   			  This was to ensure that the source EC2's IP/hostname was added to a "trusted list" of the destination EC2 so that once checked and exists, there are no issues SSH-in using a script. This
+   			  is a step that couldn't be automated use there was no way to automate this step, 
+
+   			* Additionally, the public key of the generated key-pair from the source has to be appended to the authorized_keys of the destination EC2 (the one to be SSH-d into).
+   These 
+   
+   
 7. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs had to be associated with each other's
 CIDR Blocks so that the traffic can be redirected properly.
 
@@ -84,6 +91,7 @@ CIDR Blocks so that the traffic can be redirected properly.
            dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
    	}
       }
+   
    ```
    
 
@@ -158,18 +166,28 @@ d.) The Deploy stage kept failing with an error of permission denied (public key
 ---
 
 
-## <ins>OPTIMIZATION STEPS</ins>
+## <ins>OPTIMIZATION</ins>
 
+Due to some manual and process below, I would suggest the optimization of this workload would be rooted out of that. And below are my optimization suggestions;
 
+- Reducing the single-point failure capability i.e. all units had one EC2 and not a backup in case of failure or high demand.
 
+- Use of a bit more robust EC2s that would have more resources like; storage, memory and processing power. This as well would bring about the suggestion of auto-scalling to meet the needs.
+
+- Obfuscating/ not easily revealing/or using different ports from the regular for added security.
+
+- Creating automated way of passing the public keys from the source EC2 to the destination EC2.
 
 ---
 
 
-## <ins>CONCLUSION STEPS</ins>
+## <ins>CONCLUSION</ins>
 
-
-
+While microblog_VPC_deployment was indeed a build up from microblog_EC2_deployment project, it brought about a heavier lift towards configuring and implementing advanced network features; 
+such as VPCs, availability zones, CIDR blocks, subnets, route tables, and security groups. Additionally, it can be time wasting due to the intricacies of any desired network configs, but, this 
+at the same time not only brings about good exposure towards having control of the network set up, but also some added security assurance brought about by the setup being done manually.
+It is no doubt that this is a well-suited production environment, but with it are the lack of automation, scalability and reliability to fully encompass the best practice for cloud security
+and archecture.
 
 ---
 
