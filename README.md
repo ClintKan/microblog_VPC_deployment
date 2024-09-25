@@ -14,16 +14,24 @@ While in workload 3 (see snippet of it here), it was about manually deploying a 
 
 2. Created an AWS account along with default infrastructure components like; VPC, default region, availability zone, CIDR block, NAT gateway and default subnet. It is within this that an EC2 (t3.medium Ubuntu Linux server) was setup to be used for the running of the CI/CD pipeline.
 
-3. On the above Jenkins EC2 server, Jenkins was installed on it and the following security configurations via port configurations; 22 for SSH, 8080 for Jenkins done.
+3. On the above Jenkins EC2 server, Jenkins was installed on it and the following security port configurations aka Secur; 22 for SSH, 8080 for Jenkins done.
 
 4. A second VPC was then created, with one availability zone, one public subnet and one private subnet, a NAT Gateway in 1 AZ but with DNS hostnames and DNS resolution should be selected.
 
 5. Three EC2s were then created as follows;
 
-   - One for the Web Server
-   - One for the 
+   - One for the Web Server - to host the web app. On this server, exists the much needed Web App stack; Ngnix, Flask and HTML needed collaboratively to serve, process and present
+     web content. Nginx serves as the web server and reverse proxy, managing client requests and delivering static files. Flask is a lightweight Python framework that handles the
+     backend logic and routing for dynamic content. HTML structures the web pages, defining how content is displayed. Together, they enable the creation of interactive and
+     responsive web applications.
+
+
+
+
+   - One for the Application Server - Nginx serves as the web server and reverse proxy, managing client requests and delivering static files.
 
 7. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along). Below I :
+
    **(a.) Build Stage:**
    In this stage, the focus was to setup and prepare ther server to ready it for the cloning of the Github repo
 
@@ -31,26 +39,28 @@ While in workload 3 (see snippet of it here), it was about manually deploying a 
    **(b.) Test Stage:**
    This stage was exactly similar to the workload 3's
 
-
    **(c.) OWAS FS SCAN Stage:**
    This stage was exactly similar to the workload 3's
    
    **(d.) Deploy Stage:**
-   This is where the the pipeline (the Jenkins user from the Jenkins EC2) remotes into the WebServer (via SSH) and executes the 
+   This is where the the pipeline (the Jenkins user from the Jenkins EC2) remotes into the WebServer (via SSH) and executes the following commands below
+
+   Below is an expansion on what the commands do/invoke;
+   - 
 
 
    
-8. In the AWS console, create a custom VPC with one availability zome, a public and a private subnet.  There should be a NAT Gateway in 1 AZ and no VPC endpoints.  DNS hostnames and DNS resolution should be selected.
+9. In the AWS console, create a custom VPC with one availability zome, a public and a private subnet.  There should be a NAT Gateway in 1 AZ and no VPC endpoints.  DNS hostnames and DNS resolution should be selected.
 
-9. Navigate to subnets and edit the settings of the public subet you created to auto assign public IPv4 addresses.
+10. Navigate to subnets and edit the settings of the public subet you created to auto assign public IPv4 addresses.
 
-10. In the Default VPC, create an EC2 t3.medium called "Jenkins" and install Jenkins onto it.  
+11. In the Default VPC, create an EC2 t3.medium called "Jenkins" and install Jenkins onto it.  
 
-11. Create an EC2 t3.micro called "Web_Server" In the PUBLIC SUBNET of the Custom VPC, and create a security group with ports 22 and 80 open.  
+12. Create an EC2 t3.micro called "Web_Server" In the PUBLIC SUBNET of the Custom VPC, and create a security group with ports 22 and 80 open.  
 
-12. Create an EC2 t3.micro called "Application_Server" in the PRIVATE SUBNET of the Custom VPC,  and create a security group with ports 22 and 5000 open. Make sure you create and save the key pair to your local machine.
+13. Create an EC2 t3.micro called "Application_Server" in the PRIVATE SUBNET of the Custom VPC,  and create a security group with ports 22 and 5000 open. Make sure you create and save the key pair to your local machine.
 
-13. SSH into the "Jenkins" server and run `ssh-keygen`. Copy the public key that was created and append it into the "authorized_keys" file in the Web Server. 
+14. SSH into the "Jenkins" server and run `ssh-keygen`. Copy the public key that was created and append it into the "authorized_keys" file in the Web Server. 
 
 IMPORTANT: Test the connection by SSH'ing into the 'Web_Server' from the 'Jenkins' server.  This will also add the web server instance to the "list of known hosts"
 
