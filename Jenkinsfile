@@ -55,7 +55,7 @@ pipeline {
                 fi
                     chmod 600 /var/lib/jenkins/.ssh/id_ed25519
                     ssh-keyscan -H 170.10.0.215 >> /var/lib/jenkins/.ssh/known_hosts
-                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh; whoami; pwd"
+                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash /home/ubuntu/microblog_VPC_deployment/setup.sh; whoami; pwd"
                 '''
             }
         }
