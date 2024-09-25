@@ -104,7 +104,8 @@ CIDR Blocks so that the traffic can be redirected properly.
    Below is a how the Jenkins' CI/CD pipeline would look if successful.
 
    <div align="center">
-	<>
+	<img width="1261" alt="Pasted Graphic 16" src="https://github.com/user-attachments/assets/84a41b89-de08-45c5-8211-8d250e692d0b">
+
    </div>
 
 
@@ -114,7 +115,7 @@ CIDR Blocks so that the traffic can be redirected properly.
 
 
       <div align="center">
-	      <img width="1461" alt="Microblog App" src="https://https://github.com/user-attachments/assets/645cc231-7e65-4aa7-9609-331856a2dbaa">
+	      <img width="1307" alt="Pasted Graphic 17" src="https://github.com/user-attachments/assets/783d9591-001d-4a9d-9140-21e250a936b9">
       </div>
 
 
