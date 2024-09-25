@@ -61,7 +61,6 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
 
    * Additionally, the public key of the generated key-pair from the source has to be appended to the authorized_keys of the destination EC2 (the one to be SSH-d into).
 
-   
 
    
    
