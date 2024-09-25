@@ -163,6 +163,7 @@ command the commands would be executed in the initial server and not the destina
 
 d.) The Deploy stage kept failing with an error of permission denied (public key). This was due to the fact that the Jenkins user was using ubuntu user's private key - even chmod 600 "the-private-key-file-path" didn't work. upon research and disscusions with colleagues; Shafee & Jon Wang, it was made clear that another user can't use another user's key even though you change the permissions on it. This lead to the addition of the lines below so that Jenkins creates a key and uses that to log into the Application server;
 
+e.) Due to the fact that Jenkins user has no admin privileges, the Build stage kept erroring that a password was required to execute all ``` sudo ``` related commands.
 
 ``` 
       mkdir -p /var/lib/jenkins/.ssh/
