@@ -6,7 +6,7 @@
 
 ## <ins>PURPOSE</ins>
 
-While in workload 3 (see snippet of it here), it was about manually deploying a webapp (plus doing unit testing) using a Jenkins multibranch CI/CD pipeline, in this workload 4, we structure out the cloud infrastructure; from VPCs, availability zones, nat gateway, VPC peering CIDR blocks, subnets, route tables.
+While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/microblog_EC2_deployment)), it was about manually deploying a webapp (plus doing unit testing) using a Jenkins multibranch CI/CD pipeline, in this workload 4, we structure out the cloud infrastructure; from VPCs, availability zones, nat gateway, VPC peering CIDR blocks, subnets, route tables.
 
 ## <ins>STEPS</ins>
 
