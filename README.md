@@ -124,11 +124,15 @@ CIDR Blocks so that the traffic can be redirected properly.
 ## <ins> TROUBLESHOOTING STEPS</ins>
 
 a.) The inability to have cross communication between the VPCs. This led to the use of the VPC Peering option that helps communicate on a private network level. Additionally, acceptance of the request to connect to each other and then the association of the CIDR blocks turned out to be a key step or else the VPC peering didn't work by itself.
+
 b.) The pytest requirement in the requirements.txt file was missing and therefore failing to pass the Test stage s the command **_py.test_** was not recognized. But once added all was good.
+
 c.) The execution of subsequent commands in the server (EC2) that has been SSH'd into. While SSH would work, without adding ``` "the-commands-to-execute-while-in-the-server-you-ssh-into" ``` on the same line as the SSH 
 command the commands would be executed in the initial server and not the destination server that's been SSH'd into. See the **_Deploy stage_** and the **_setup.sh_** script for more here
-d.) The Deploy stage kept failing with an error of permission denied (public key). This was due to the fact that the Jenkins user was using ubuntu user's private key - even chmod 600 "the-private-key-file-path" didn't work. upon research and disscusions with colleagues; Shafee & Jon Wang, it was made clear that another user can't use another user's key even though you change the permissions on it. This lead to the addition of the
-lines below so that Jenkins creates a key and uses that to log into the Application server;
+
+d.) The Deploy stage kept failing with an error of permission denied (public key). This was due to the fact that the Jenkins user was using ubuntu user's private key - even chmod 600 "the-private-key-file-path" didn't work. upon research and disscusions with colleagues; Shafee & Jon Wang, it was made clear that another user can't use another user's key even though you change the permissions on it. This lead to the addition of the lines below so that Jenkins creates a key and uses that to log into the Application server;
+
+
 ``` 
       mkdir -p /var/lib/jenkins/.ssh/
       if [ ! -f "/var/lib/jenkins/.ssh/id_ed25519" ] && [ ! -f "/var/lib/jenkins/.ssh/id_ed25519.pub" ]; then
