@@ -37,15 +37,15 @@ pipeline {
         //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
         //         }
         //     }
-        // stage ('OWASP FS SCAN') {
-        //     environment {
-        //         NVD_APIKEY = credentials("NVD-ApiKey")
-        //     }
-        //     steps {
-        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD_APIKEY}', odcInstallation: 'DP-Check'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
+        stage ('OWASP FS SCAN') {
+            environment {
+                NVD_APIKEY = credentials("NVD-ApiKey")
+            }
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD_APIKEY}', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
         stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
