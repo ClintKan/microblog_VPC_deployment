@@ -53,8 +53,8 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
      
    <ins>**Note:**</ins>
 
-   * Pior to every automated SSH session that happened in the Deploy stage and the setup.sh script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
-     EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (./ssh/known_hosts) file.
+   * Pior to every automated SSH session that happened in the **_Deploy stage_** and the **_setup.sh_** script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
+     EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (**_./ssh/known_hosts_**) file.
      This was to ensure that the source EC2's IP/hostname was added to a "trusted list" of the destination EC2 so that once checked and exists, there are no issues SSH-in using a script. This
      is a step that couldn't be automated use there was no way to automate this step.
      
