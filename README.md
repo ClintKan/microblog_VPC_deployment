@@ -20,16 +20,19 @@ While in workload 3 (see snippet of it here), it was about manually deploying a 
 
 5. Three EC2s were then created as follows;
 
-   - One for the Web Server - to host the web app. On this server, exists the much needed Web App stack; Ngnix, Flask and HTML needed collaboratively to serve, process and present
-     web content. Nginx serves as the web server and reverse proxy, managing client requests and delivering static files. Flask is a lightweight Python framework that handles the
-     backend logic and routing for dynamic content. HTML structures the web pages, defining how content is displayed. Together, they enable the creation of interactive and
-     responsive web applications.
+   - One for the Web Server - Created in a public subnet with a security group opening only ports; 22 (SSH) & 80 (HTTP), this is the server that hosted the web app. On it, was 3 WebApp stac
+     tools were installed; Ngnix, Flask and HTML needed collaboratively to serve, process and present web content. Nginx serves as the web server and reverse proxy, managing
+     client requests and delivering static files. Flask is a lightweight Python framework that handles the backend logic and routing for dynamic content. HTML structures the web
+     pages, defining how content is displayed. Together, they enable the creation of interactive and responsive web applications.
 
+   - One for the Application Server - Created in a private subnet with a security group opening only ports; 22 (SSH) & 5000 (this port was opened to be used for serving the web app
+     to Ngnix serving as a reverse proxy). Additionally, the application server is the hub of all the webapp's files - that got added by executing the start_app.sh that got
+     invoked by executing the setup.sh from the Web Server.
 
-
-
-   - One for the Application Server - Nginx serves as the web server and reverse proxy, managing client requests and delivering static files.
-
+   - One for the Monitoring Server - Created in a public subnet with a security group opening only ports; 22 (SSH) & 3000 (Grafana) & 9090 (Prometheus). This is a server that was
+     setup for monitoring purposes of the (aforementioned) servers and the webapp.
+     
+     
 7. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along). Below I :
 
    **(a.) Build Stage:**
@@ -45,7 +48,7 @@ While in workload 3 (see snippet of it here), it was about manually deploying a 
    **(d.) Deploy Stage:**
    This is where the the pipeline (the Jenkins user from the Jenkins EC2) remotes into the WebServer (via SSH) and executes the following commands below
 
-   Below is an expansion on what the commands do/invoke;
+Below is an expansion on what the commands do/invoke;
    - 
 
 
