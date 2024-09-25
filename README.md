@@ -53,13 +53,15 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
    - One for the Monitoring Server - Created in a public subnet with a security group opening only ports; 22 (SSH) & 3000 (Grafana) & 9090 (Prometheus). This is a server that was
      setup for monitoring purposes of the (aforementioned) servers and the webapp.
      
-   <ins>**Note:**</ins> * Pior to every automated SSH session that happened in the Deploy stage and the setup.sh script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
-   			  EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (./ssh/known_hosts) file.
-   			  This was to ensure that the source EC2's IP/hostname was added to a "trusted list" of the destination EC2 so that once checked and exists, there are no issues SSH-in using a script. This
-   			  is a step that couldn't be automated use there was no way to automate this step, 
+   <ins>**Note:**</ins>
+   		* Pior to every automated SSH session that happened in the Deploy stage and the setup.sh script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
+		 EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (./ssh/known_hosts) file.
+		 This was to ensure that the source EC2's IP/hostname was added to a "trusted list" of the destination EC2 so that once checked and exists, there are no issues SSH-in using a script. This
+		 is a step that couldn't be automated use there was no way to automate this step.
 
-   			* Additionally, the public key of the generated key-pair from the source has to be appended to the authorized_keys of the destination EC2 (the one to be SSH-d into).
-   These 
+   
+		 * Additionally, the public key of the generated key-pair from the source has to be appended to the authorized_keys of the destination EC2 (the one to be SSH-d into).
+
    
    
 7. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs had to be associated with each other's
