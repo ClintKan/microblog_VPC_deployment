@@ -36,9 +36,12 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
 
 	   ```
     
-    	   These lines basically forced Nginx to listed to the Application server's private IP via port 5000, and then redirect and serve that to it's (the Web server's) IP address at port 80.
+
+   These lines basically forced Nginx to listed to the Application server's private IP via port 5000, and then redirect and serve that to it's (the Web server's) IP address at port 80.
+   
 
     <ins>**Note:**</ins> To confirm the changes made are valid, run the command ``` sudo nginx -t ```.
+   
 
     While not related to the application, but rather for monitoring purposes, Node Exporter a monitoring tool was installed on the Web server as well so as to scrape metrics and serve them to the Monitoring
     server's Prometheus and Grafana (_more on this below_).
