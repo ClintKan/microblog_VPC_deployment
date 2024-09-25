@@ -31,6 +31,12 @@ pipeline {
                 }
             }
         }
+      stage ('Security Check') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey 5a3a753b-8edc-43f5-a07f-14f53235a3e9', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
     //   stage ('OWASP FS SCAN') {
     //         environment {
     //             NVD-APIKEY = credentials("NVD-ApiKey")
