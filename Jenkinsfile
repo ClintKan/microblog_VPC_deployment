@@ -37,7 +37,7 @@ pipeline {
     //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
     //         }
     //     }
-      stage ('OWASP FS SCAN') {
+        stage ('OWASP FS SCAN') {
             environment {
                 NVD-APIKEY = credentials("NVD-ApiKey")
             }
@@ -46,7 +46,7 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
-      stage ('Deploy') {
+        stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
                 mkdir -p /var/lib/jenkins/.ssh/
