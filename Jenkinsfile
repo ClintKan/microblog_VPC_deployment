@@ -31,21 +31,21 @@ pipeline {
                 }
             }
         }
-    //   stage ('Security Check') {
-    //         steps {
-    //             dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-    //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-    //         }
-    //     }
-        stage ('OWASP FS SCAN') {
-            environment {
-                NVD_APIKEY = credentials("NVD-ApiKey")
-            }
-            steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD_APIKEY}', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
+        //   stage ('Security Check') {
+        //         steps {
+        //             dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+        //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //         }
+        //     }
+        // stage ('OWASP FS SCAN') {
+        //     environment {
+        //         NVD_APIKEY = credentials("NVD-ApiKey")
+        //     }
+        //     steps {
+        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD_APIKEY}', odcInstallation: 'DP-Check'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
         stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
@@ -55,7 +55,7 @@ pipeline {
                 fi
                     chmod 600 /var/lib/jenkins/.ssh/id_ed25519
                     ssh-keyscan -H 170.10.0.215 >> /var/lib/jenkins/.ssh/known_hosts
-                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh"
+                    ssh -t -i /var/lib/jenkins/.ssh/id_ed25519 ubuntu@170.10.0.215 "git clone https://github.com/ClintKan/microblog_VPC_deployment.git; bash ~./setup.sh; whoami; pwd"
                 '''
             }
         }
