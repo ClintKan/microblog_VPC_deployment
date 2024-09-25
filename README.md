@@ -198,6 +198,8 @@ Being a learning process, there were multiple resources and program colleagues t
 
 **Colleagues:** Shafee, Carl Gordon, Jon Wang
 
+**Kura Labs resources:** Class video recording materials -- and notes taken from them
+
 **Web links:**
 - https://plugins.jenkins.io/dependency-check-jenkins-plugin/
 - https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command
