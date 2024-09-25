@@ -52,20 +52,20 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
      setup for monitoring purposes of the (aforementioned) servers and the webapp.
      
    <ins>**Note:**</ins>
+   
    		* Pior to every automated SSH session that happened in the Deploy stage and the setup.sh script, there was a manual SSH session that was performed (as ubuntu user) so that the source/start
 		 EC2 (where the SSH is initiated) would be added to the destination EC2's known_hosts (./ssh/known_hosts) file.
 		 This was to ensure that the source EC2's IP/hostname was added to a "trusted list" of the destination EC2 so that once checked and exists, there are no issues SSH-in using a script. This
 		 is a step that couldn't be automated use there was no way to automate this step.
 
    
-		 * Additionally, the public key of the generated key-pair from the source has to be appended to the authorized_keys of the destination EC2 (the one to be SSH-d into).
 
    
    
-7. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs had to be associated with each other's
+6. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs had to be associated with each other's
 CIDR Blocks so that the traffic can be redirected properly.
 
-8. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along):
+7. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along):
 
    **(a.) Build Stage:**
    In this stage, the focus was to setup and prepare the server to ready it for the cloning of the Github repo and the test stage to be executed on the server's terminal.
