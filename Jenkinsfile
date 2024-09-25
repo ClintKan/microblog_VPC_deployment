@@ -31,21 +31,21 @@ pipeline {
                 }
             }
         }
-      stage ('Security Check') {
-            steps {
-                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
-    //   stage ('OWASP FS SCAN') {
-    //         environment {
-    //             NVD-APIKEY = credentials("NVD-ApiKey")
-    //         }
+    //   stage ('Security Check') {
     //         steps {
-    //             dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD-APIKEY}', odcInstallation: 'DP-Check'
+    //             dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
     //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
     //         }
     //     }
+      stage ('OWASP FS SCAN') {
+            environment {
+                NVD-APIKEY = credentials("NVD-ApiKey")
+            }
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit --nvdApiKey ${NVD-APIKEY}', odcInstallation: 'DP-Check'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
       stage ('Deploy') {
             steps {
                 sh '''#!/bin/bash
