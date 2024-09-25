@@ -44,11 +44,11 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
     While not related to the application, but rather for monitoring purposes, Node Exporter a monitoring tool was installed on the Web server as well so as to scrape metrics and serve them to the Monitoring
     server's Prometheus and Grafana (_more on this below_).
 
-   - One for the Application Server - Created in a private subnet with a security group opening only ports; 22 (SSH) & 5000 (this port was opened to be used for serving the web app
+   - **One for the Application Server;** - Created in a private subnet with a security group opening only ports; 22 (SSH) & 5000 (this port was opened to be used for serving the web app
      to Ngnix serving as a reverse proxy). Additionally, the application server is the hub of all the webapp's files - that got added by executing the start_app.sh that got
      invoked by executing the setup.sh from the Web Server. This was placed into the private subnet for extra level protection - not to interface with the internet.
 
-   - One for the Monitoring Server - Created in a public subnet with a security group opening only ports; 22 (SSH) & 3000 (Grafana) & 9090 (Prometheus). This is a server that was
+   - **One for the Monitoring Server;** - Created in a public subnet with a security group opening only ports; 22 (SSH) & 3000 (Grafana) & 9090 (Prometheus). This is a server that was
      setup for monitoring purposes of the (aforementioned) servers and the webapp.
      
    <ins>**Note:**</ins>
