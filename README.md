@@ -26,16 +26,14 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
      pages, defining how content is displayed. Together, they enable the creation of interactive and responsive web applications.
 
      Nginx was made to act as a reverse proxy server by updating the nginx config file located in; /etc/nginx/sites-enabled/default, replacing the location part in the file with the lines below;
-     
-     	   ```
-     	   location / {
-	   proxy_pass http://<application-server's-private_IP>:5000;
-	   proxy_set_header Host $host;
-	   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	   }
 
-	   ```
-    
+            ```
+                location / {
+                proxy_pass http://127.0.0.1:5000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                }
+            ```
 
    These lines basically forced Nginx to listed to the Application server's private IP via port 5000, and then redirect and serve that to it's (the Web server's) IP address at port 80.
    
