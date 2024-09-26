@@ -8,6 +8,24 @@
 
 While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/microblog_EC2_deployment)), it was about manually deploying a webapp (plus doing unit testing) using a Jenkins multibranch CI/CD pipeline, in this workload 4, we structure out the cloud infrastructure; from VPCs, availability zones, nat gateway, VPC peering CIDR blocks, subnets, route tables.
 
+
+---
+
+
+
+## <ins>SYSTEM DESIGN DIAGRAM</ins>
+
+
+<div align="center">
+	<img width="919" alt="Pasted Graphic 18" src="https://github.com/user-attachments/assets/dcf2fc7c-1f2c-4f4d-8f81-c646d70c7895">
+</div>
+
+
+
+---
+
+
+
 ## <ins>STEPS</ins>
 
 1. Application source files were cloned onto my workstation and then pushed to my GitHub (with a specified repo name - without the quotes - "**_microblog_VPC_deployment_**")
@@ -128,9 +146,10 @@ CIDR Blocks so that the traffic can be redirected properly.
    </div>
 
 
-   Furthermore is what happens once the **_setup.sh_** is run. In the setup script is the invokation to remote (via SSH) into the Application server to then execute/run the **_start_app.sh_** script. On running the
-   **_start_app.sh_**, this repo is then cloned again on to the Application server, a virtual environment created, the app's re-requisites for smooth runnning installed and the then the app itself launched.
-   It is successful when the app is accessible via the public IP address of the Web Server - why? see
+   Furthermore is what happens once the **_setup.sh_** is run. In the setup script is the invokation to remote (via SSH) into the Application server to then execute/run the
+   **_start_app.sh_** script. On running the **_start_app.sh_**, this repo is then cloned again on to the Application server, a virtual environment created, the app's re
+   requisites for smooth runnning installed and the then the app itself launched. It is successful when the app is accessible via the public IP address of the Web Server -
+   why? see
 
 
       <div align="center">
@@ -138,16 +157,22 @@ CIDR Blocks so that the traffic can be redirected properly.
       </div>
 
 
+
+      <div align="center">
+	      <img width="1912" alt="image" src="https://github.com/user-attachments/assets/3af7f0e7-0c04-43fb-8be0-9fa7fb9a6fe2">
+      </div>
+
 ---
 
 
-## <ins>SYSTEM DESIGN DIAGRAM</ins>
 
+## <ins>MONITORING</ins>
+
+In this section, this to show how the metrics about the App server and the Jenkins server were scraped and passed on to the Monitoring server.
 
 <div align="center">
-	<img width="919" alt="Pasted Graphic 18" src="https://github.com/user-attachments/assets/dcf2fc7c-1f2c-4f4d-8f81-c646d70c7895">
+	<img width="1505" alt="image" src="https://github.com/user-attachments/assets/33801535-9b59-446a-9ee4-8895300f3fde">
 </div>
-
 
 
 ---
