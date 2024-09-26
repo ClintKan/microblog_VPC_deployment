@@ -236,7 +236,7 @@ and archecture.
 ---
 
 
-## <ins>REFERENCES & HONEROABLE MENTIONS FROM COLLEAGUES</ins>
+## <ins>REFERENCES & HONOROABLE MENTIONS FROM COLLEAGUES</ins>
 
 Being a learning process, there were multiple resources and program colleagues that I consulted to be able to put this together and in this section I would like to list them out;
 
