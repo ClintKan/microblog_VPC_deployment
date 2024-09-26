@@ -248,7 +248,7 @@ Being a learning process, there were multiple resources and program colleagues t
 **Web links:**
 - https://plugins.jenkins.io/dependency-check-jenkins-plugin/
 - https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command
-- https://github.com/ClintKan/microblog_EC2_deployment (Workload 3, since this is deployment step up of it).
+- https://github.com/ClintKan/microblog_EC2_deployment (Workload 3, since this is deployment is a step up of it).
 - https://medium.com/@atish.sarambale/owasp-dependency-check-with-jenkins-24dc98d70e46
 - https://www.npmjs.com/package/follow-redirects
 - https://proxiesapi.com/articles/the-redirect-ninja-s-guide-to-mastering-python-requests
