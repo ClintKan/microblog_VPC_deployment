@@ -217,10 +217,11 @@ Due to some manual and process below, I would suggest the optimization of this w
 - Reducing the single-point failure capability i.e. all units had one EC2 and not a backup in case of failure or high demand.
 
 - Use of a bit more robust EC2s that would have more resources like; storage, memory and processing power. This as well would bring about the suggestion of auto-scalling to meet the needs.
+  
+- Creating automated way of passing the public keys from the source EC2 to the destination EC2. In this workload, there were two repetitive steps that had to be done; ssh-ing into the destination EC2 so that it's added to the known hosts list, and the adding of the private key to the authorized_keys file. Extrapolate this to 100 machines, it wouldn't be viable.
+  
+- Obfuscating to not easily reveal the different ports from the regular for added security.
 
-- Obfuscating/ not easily revealing/or using different ports from the regular for added security.
-
-- Creating automated way of passing the public keys from the source EC2 to the destination EC2.
 
 ---
 
