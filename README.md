@@ -157,11 +157,6 @@ CIDR Blocks so that the traffic can be redirected properly.
       </div>
 
 
-
-      <div align="center">
-	      <img width="1912" alt="image" src="https://github.com/user-attachments/assets/3af7f0e7-0c04-43fb-8be0-9fa7fb9a6fe2">
-      </div>
-
 ---
 
 
@@ -172,6 +167,11 @@ In this section, this to show how the metrics about the App server and the Jenki
 
 <div align="center">
 	<img width="1505" alt="image" src="https://github.com/user-attachments/assets/33801535-9b59-446a-9ee4-8895300f3fde">
+</div>
+
+
+<div align="center">
+	<img width="1912" alt="image" src="https://github.com/user-attachments/assets/3af7f0e7-0c04-43fb-8be0-9fa7fb9a6fe2">
 </div>
 
 
