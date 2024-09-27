@@ -82,10 +82,10 @@ While in workload 3 ([_see snippet of it here_](https://github.com/ClintKan/micr
 
    
    
-7. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs had to be associated with each other's
-CIDR Blocks so that the traffic can be redirected properly.
+6. VPC Peering was setup so that the default and Custom VPCs can communicate on a private network level without the getting on the internet. Route tables in both VPCs (the 2 in custom VPC and 1 in the
+   default VPC) had to be associated with each other's CIDR Blocks so that the traffic can be redirected properly.
 
-8. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along):
+7. CI/CD Pipeline configuration was then done, not so different from the one in workload 3 - within the Jenkins file as follows (reference it here to follow along):
 
    **(a.) Build Stage:**
    In this stage, the focus was to setup and prepare the server to ready it for the cloning of the Github repo and the test stage to be executed on the server's terminal.
